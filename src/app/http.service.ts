@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../app/models/user';
-import { Role } from '../app/models/role';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +16,10 @@ export class HttpService {
 
   doGet(path){
     return this.http.get(`${this.uri}` + path);
+  }
+
+  doDel(path){
+    return this.http.delete(`${this.uri}` + path)
   }
 
 }

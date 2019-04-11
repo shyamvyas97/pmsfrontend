@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user';
 import { Project } from '../../../models/project';
+import { Bug } from '../../../models/bug';
 import { HttpService } from '../../../http.service';
 
 @Component({
@@ -14,17 +15,19 @@ export class AddbugComponent implements OnInit {
 
   users: User[];
   projects: Project[];
+  bugs: Bug[];
   createBug: FormGroup;
+  mode: string = 'Add';
   bug_name;
   of_project;
   users_assigned;
 
-  constructor(private httpService: HttpService, private fb: FormBuilder) {
-    this.createBug = this.fb.group({
-      bug_name: [''],
-      of_project: [''],
-      users_assigned: ['']
-    });
+  constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
+    // this.createBug = this.fb.group({
+    //   bug_name: [''],
+    //   of_project: [''],
+    //   users_assigned: ['']
+    // });
   }
 
   addBug() {
@@ -61,6 +64,58 @@ export class AddbugComponent implements OnInit {
   ngOnInit() {
     this.fetchProjects();
     this.fetchUsers();
+    let id = this.route.snapshot.params["id"];
+    
+    if (id) {
+      this.bugsList(id);
+      this.mode = "Edit";
+    } else {
+      this.mode = "Create";
+      this.validator();
+    }
+  }
+
+  bugsList(id) {
+    this.httpService.doGet("bugs/" + id).subscribe((res: any) => {
+      this.bug_name = res.bug_name;
+      this.of_project = res.of_project;
+      this.users_assigned = res.users_assigned;
+      this.validator();
+    });
+  }
+
+  validator() {
+    this.createBug = this.fb.group({
+      bug_name: ['this.bug_name'],
+      of_project: ['this.of_project'],
+      users_assigned: ['this.users_assigned']
+    });
+  }
+
+  onSubmit() {
+    let that = this;
+    let id = this.route.snapshot.params["id"];
+    if (!id) {
+      console.log(id);
+      this.httpService.doPost("/bug/add", this.createBug.value)
+        .subscribe(
+          (data: any) => {
+            that.router.navigate(["bugs"]);
+          },
+          (err: any) => { }
+        );
+    }
+    else {
+      this.httpService.doPost("/bugs/" + id, this.createBug.value)
+        .subscribe(
+          (data: any) => {
+            that.router.navigate(["bugs"]);
+          },
+          (err: any) => { }
+        )
+    }
   }
 
 }
+
+

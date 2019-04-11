@@ -7,27 +7,27 @@
       asdf
       <form name="createProject" [formGroup]="createProject" (ngSubmit)="onSubmit()">
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="title" formControlName="title" #title [(ngModel)]="title">
+        <input matInput placeholder="title" [value]="title" formControlName="title" #title [(ngModel)]="title">
       </mat-form-field>
       
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="desc" formControlName="desc" #desc [(ngModel)]="desc">
+        <input matInput placeholder="desc" [value]="desc" formControlName="desc" #desc [(ngModel)]="desc">
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <mat-select [(ngModel)]="multiple_users" formControlName="multiple_users" #multiple_users placeholder="multiple_users" multiple>
+        <mat-select [(ngModel)]="multiple_users" [value]="multiple_users" formControlName="multiple_users" #multiple_users placeholder="multiple_users" multiple>
           <mat-option *ngFor="let user of users" [value]="user.name">{{user.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [(ngModel)]="start_date" [matDatepicker]="picker1" formControlName="start_date" #start_date placeholder="Choose a start date">
+        <input matInput [(ngModel)]="start_date" [value]="start_date" [matDatepicker]="picker1" formControlName="start_date" #start_date placeholder="Choose a start date">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [(ngModel)]="end_date" [matDatepicker]="picker2" formControlName="end_date" #end_date placeholder="Choose a end date">
+        <input matInput [(ngModel)]="end_date" [value]="end_date" [matDatepicker]="picker2" formControlName="end_date" #end_date placeholder="Choose a end date">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>

@@ -31,7 +31,7 @@ export class ListprojectComponent implements OnInit {
     console.log(this.projects);
   }
 
-  deleteUser($event) 
+  deleteProject($event) 
    {
     let id = $event.target.id;
     let that = this;

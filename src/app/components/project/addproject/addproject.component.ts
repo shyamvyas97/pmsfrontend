@@ -54,12 +54,13 @@ export class AddprojectComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.params["id"];
-    this.validator();
+    
     if (id) {
       this.projectsList(id);
       this.mode = "Edit";
     } else {
       this.mode = "Create";
+      this.validator();
     }
   }
 

@@ -1,0 +1,29 @@
+
+<div>
+  <button type="button" class="btn btn-primary" (click)="addTask()" style="float: right;">New Project</button>
+<div class="card-body">
+  <table class="table table-bordered">
+    <tr>
+      <!-- <th>#</th> -->
+      <th>Task</th>
+      <th>Project</th>
+      <th>Users</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let task of tasks; let ind = index">
+      <!-- <td>{{project._id}}</td> -->
+      <td>{{task.task_name}}</td>
+      <td>{{task.of_project}}</td>
+      <td>{{task.users_assigned}}</td>
+      <td>
+          <a routerLink="/tasks/add/{{task._id}}">Edit</a>&nbsp;
+        <button mat-button color="warn" (click)="deleteTask($event)">Delete</button>
+        <!-- <a routerLink="/{{commonFunctions.getAccessCodePrefix()}}/projects/edit/{{project._id}}">Edit</a>&nbsp;
+            <a href="javascript:;" (click)="deleteProject($event)" data-id="{{project._id}}">Delete</a> -->
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+</div>
