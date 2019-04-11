@@ -36,14 +36,14 @@ export class AddtaskComponent implements OnInit {
       of_project: this.of_project,
       users_assigned: this.users_assigned
     };
-    this.httpService.doPost('/task/add', task);
+    this.httpService.doPost('task/add', task);
     // .subscribe(() => {
     //   this.router.navigate(['/dashboard']);
     // });
   }
 
   fetchUsers() {
-    this.httpService.doGet('/users')
+    this.httpService.doGet('users')
       .subscribe((data: User[]) => {
         this.users = data;
         console.log('Data requested ...');
@@ -52,7 +52,7 @@ export class AddtaskComponent implements OnInit {
   }
 
   fetchProjects() {
-    this.httpService.doGet('/projects')
+    this.httpService.doGet('projects')
       .subscribe((data: Project[]) => {
         this.projects = data;
         console.log('Data requested ...');
@@ -75,7 +75,7 @@ export class AddtaskComponent implements OnInit {
   }
 
   tasksList(id) {
-    this.httpService.doGet("projects/" + id).subscribe((res: any) => {
+    this.httpService.doGet("tasks/" + id).subscribe((res: any) => {
       this.task_name = res.task_name;
       this.of_project = res.of_project;
       this.users_assigned = res.users_assigned;
@@ -96,7 +96,7 @@ export class AddtaskComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     if (!id) {
       console.log(id);
-      this.httpService.doPost("/task/add", this.createTask.value)
+      this.httpService.doPost("task/add", this.createTask.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["tasks"]);
@@ -105,7 +105,7 @@ export class AddtaskComponent implements OnInit {
         );
     }
     else {
-      this.httpService.doPost("/tasks/" + id, this.createTask.value)
+      this.httpService.doPost("task/edit/" + id, this.createTask.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["tasks"]);

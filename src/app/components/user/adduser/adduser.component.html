@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-6">
       asdf
-      <form [formGroup]="createUser">
+      <form [formGroup]="createUser" form name="createUser" (ngSubmit)="onSubmit()">
       <mat-form-field class="field-full-width">
         <input matInput placeholder="name" formControlName="name" #name [(ngModel)]="name">
       </mat-form-field>

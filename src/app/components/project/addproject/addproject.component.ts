@@ -37,14 +37,14 @@ export class AddprojectComponent implements OnInit {
       start_date: this.start_date,
       end_date: this.end_date
     };
-    this.httpService.doPost('/project/add', project);
+    this.httpService.doPost('project/add', project);
     // .subscribe(() => {
     //   this.router.navigate(['/dashboard']);
     // });
   }
 
   fetchUsers() {
-    this.httpService.doGet('/users')
+    this.httpService.doGet('users')
       .subscribe((data: User[]) => {
         this.users = data;
         console.log('Data requested ...');
@@ -90,7 +90,7 @@ export class AddprojectComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     if (!id) {
       console.log(id);
-      this.httpService.doPost("/project/add", this.createProject.value)
+      this.httpService.doPost("project/add", this.createProject.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["projects"]);
@@ -99,7 +99,7 @@ export class AddprojectComponent implements OnInit {
         );
     }
     else {
-      this.httpService.doPost("/projects/" + id, this.createProject.value)
+      this.httpService.doPost("project/edit/" + id, this.createProject.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["projects"]);

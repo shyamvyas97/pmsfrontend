@@ -83,7 +83,7 @@ export class AdduserComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     if (!id) {
       console.log(id);
-      this.httpService.doPost("/user/add", this.createUser.value)
+      this.httpService.doPost("user/add", this.createUser.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["users"]);
@@ -92,7 +92,7 @@ export class AdduserComponent implements OnInit {
         );
     }
     else {
-      this.httpService.doPost("/users/" + id, this.createUser.value)
+      this.httpService.doPost("user/edit/" + id, this.createUser.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["users"]);

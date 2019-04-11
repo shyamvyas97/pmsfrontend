@@ -20,7 +20,7 @@ export class ListbugComponent implements OnInit {
   }
 
   getBugs(){
-    this.httpService.doGet("/bugs").subscribe((res: Bug[]) => {
+    this.httpService.doGet("bugs").subscribe((res: Bug[]) => {
       this.bugs = res;
     });
     console.log(this.bugs);
@@ -37,7 +37,7 @@ export class ListbugComponent implements OnInit {
 
   addBug()
   {
-  	this.router.navigate(['/bugs/add']);
+  	this.router.navigate(['bugs/add']);
   }
 }
 

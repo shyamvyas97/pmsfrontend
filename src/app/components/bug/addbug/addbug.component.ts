@@ -36,14 +36,14 @@ export class AddbugComponent implements OnInit {
       of_project: this.of_project,
       users_assigned: this.users_assigned
     };
-    this.httpService.doPost('/bug/add', task);
+    this.httpService.doPost('bug/add', task);
     // .subscribe(() => {
     //   this.router.navigate(['/dashboard']);
     // });
   }
 
   fetchUsers() {
-    this.httpService.doGet('/users')
+    this.httpService.doGet('users')
       .subscribe((data: User[]) => {
         this.users = data;
         console.log('Data requested ...');
@@ -52,7 +52,7 @@ export class AddbugComponent implements OnInit {
   }
 
   fetchProjects() {
-    this.httpService.doGet('/projects')
+    this.httpService.doGet('projects')
       .subscribe((data: Project[]) => {
         this.projects = data;
         console.log('Data requested ...');
@@ -97,7 +97,7 @@ export class AddbugComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     if (!id) {
       console.log(id);
-      this.httpService.doPost("/bug/add", this.createBug.value)
+      this.httpService.doPost("bug/add", this.createBug.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["bugs"]);
@@ -106,7 +106,7 @@ export class AddbugComponent implements OnInit {
         );
     }
     else {
-      this.httpService.doPost("/bugs/" + id, this.createBug.value)
+      this.httpService.doPost("bug/edit/" + id, this.createBug.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["bugs"]);
