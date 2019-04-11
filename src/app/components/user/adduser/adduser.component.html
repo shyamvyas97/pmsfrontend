@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      asdf
+    </div>
+    <div class="col-md-6">
+      asdf
+      <form [formGroup]="createUser">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="name" formControlName="name" #name [(ngModel)]="name">
+      </mat-form-field>
+      
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="email" formControlName="email" #email [(ngModel)]="email">
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <mat-select [(ngModel)]="role_name" formControlName="role_name" #role_name placeholder="Roles" multiple>
+          <mat-option *ngFor="let role of roles" [value]="role.role_name">{{role.role_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="submit"
+      (click)="addUser()"
+       mat-raised-button color="primary">Register
+    </button>
+  </form>
+      asdf
+    </div>
+    <div class="col-md-3">
+      zxcv
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      asdf
+    </div>
+    <div class="col-md-6">
+      asdf
+      <form name="createProject" [formGroup]="createProject" (ngSubmit)="onSubmit()">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="title" formControlName="title" #title [(ngModel)]="title">
+      </mat-form-field>
+      
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="desc" formControlName="desc" #desc [(ngModel)]="desc">
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <mat-select [(ngModel)]="multiple_users" formControlName="multiple_users" #multiple_users placeholder="multiple_users" multiple>
+          <mat-option *ngFor="let user of users" [value]="user.name">{{user.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="start_date" [matDatepicker]="picker1" formControlName="start_date" #start_date placeholder="Choose a start date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="end_date" [matDatepicker]="picker2" formControlName="end_date" #end_date placeholder="Choose a end date">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">Add Project
+    </button>
+  </form>
+      asdf
+    </div>
+    <div class="col-md-3">
+      zxcv
+    </div>
+  </div>
+</div>
