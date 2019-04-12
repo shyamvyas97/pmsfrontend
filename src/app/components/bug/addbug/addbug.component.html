@@ -1,18 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      asdf
     </div>
     <div class="col-md-6">
-      asdf
-      <form [formGroup]="createBug" form name="createBug" (ngSubmit)="onSubmit()>
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="bug_name" [value]="bug_name" formControlName="bug_name" #bug_name [(ngModel)]="bug_name">
+      <form [formGroup]="createBug" name="createBug" (ngSubmit)="onSubmit()">
+        <mat-form-field> 
+          <input matInput placeholder="bug_name" [value]="bug_name" formControlName="bug_name" [(ngModel)]="bug_name" #bug_name>
         </mat-form-field>
 
         <mat-form-field class="field-full-width">
-          <mat-select [(ngModel)]="of_project" [value]="of_project" formControlName="of_project" #of_project placeholder="of_project"
-            multiple>
+          <mat-select [(ngModel)]="of_project" [value]="of_project" formControlName="of_project" #of_project placeholder="of_project" multiple>
             <mat-option *ngFor="let project of projects" [value]="project.title">{{project.title}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -27,10 +24,8 @@
         <button type="submit" mat-raised-button color="primary">Add Bug
         </button>
       </form>
-      asdf
     </div>
     <div class="col-md-3">
-      zxcv
     </div>
   </div>
 </div>
