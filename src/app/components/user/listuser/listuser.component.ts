@@ -19,7 +19,7 @@ export class ListuserComponent implements OnInit {
   }
 
   getUsers(){
-    this.httpService.doGet("/users").subscribe(res=>{
+    this.httpService.doGet("users").subscribe(res=>{
       this.users = res;
     });
     console.log(this.users);
@@ -36,7 +36,8 @@ export class ListuserComponent implements OnInit {
 
   addUser()
   {
-  	this.router.navigate(['/users/add']);
+  	this.router.navigate(['/adduser']);
   }
 
 }
+

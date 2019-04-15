@@ -22,4 +22,8 @@ export class HttpService {
     return this.http.delete(`${this.uri}` + path)
   }
 
+  doPatch(path,data)
+  {
+    return this.http.patch(`${this.uri}` + path,data);
+  }
 }

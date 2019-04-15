@@ -27,27 +27,6 @@ export class AdduserComponent implements OnInit {
     });
   }
 
-  addUser(){
-    const user = {
-        name: this.name,
-        email: this.email,
-        role_name: this.role_name
-      };
-    this.httpService.doPost('/user/add',user);
-    // .subscribe(() => {
-    //   this.router.navigate(['/dashboard']);
-    // });
-  }
-
-  fetchRoles() {
-    this.httpService.doGet('/roles')
-    .subscribe((data: Role[]) => {
-        this.roles = data;
-        console.log('Data requested ...');
-        console.log(this.roles);
-      });
-  }
-
   ngOnInit() {
     this.fetchRoles();
     let id = this.route.snapshot.params["id"];
@@ -61,6 +40,29 @@ export class AdduserComponent implements OnInit {
     }
   }
 
+  // addUser(){
+  //   const user = {
+  //       name: this.name,
+  //       email: this.email,
+  //       role_name: this.role_name
+  //     };
+  //   this.httpService.doPost('user/add',user);
+  //   // .subscribe(() => {
+  //   //   this.router.navigate(['/dashboard']);
+  //   // });
+  // }
+
+  fetchRoles() {
+    this.httpService.doGet('roles')
+    .subscribe((data: Role[]) => {
+        this.roles = data;
+        console.log('Data requested ...');
+        console.log(this.roles);
+      });
+  }
+
+  
+
   usersList(id) {
     this.httpService.doGet("users/" + id).subscribe((res: any) => {
       this.name = res.name;
@@ -72,9 +74,9 @@ export class AdduserComponent implements OnInit {
 
   validator() {
     this.createUser = this.fb.group({
-      name: ['this.name'],
-      email: ['this.email'],
-      role_name: ['this.role_name']
+      name: [this.name],
+      email: [this.email],
+      role_name: [this.role_name]
     });
   }
 
@@ -92,7 +94,7 @@ export class AdduserComponent implements OnInit {
         );
     }
     else {
-      this.httpService.doPost("user/edit/" + id, this.createUser.value)
+      this.httpService.doPatch("users/" + id, this.createUser.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["users"]);

@@ -22,24 +22,11 @@ export class AddtaskComponent implements OnInit {
   of_project;
   users_assigned;
   constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
-    // this.createTask = this.fb.group({
-    //   task_name: [''],
-    //   of_project: [''],
-    //   users_assigned: ['']
-    // });
-  }
-
-
-  addTask() {
-    const task = {
-      task_name: this.task_name,
-      of_project: this.of_project,
-      users_assigned: this.users_assigned
-    };
-    this.httpService.doPost('task/add', task);
-    // .subscribe(() => {
-    //   this.router.navigate(['/dashboard']);
-    // });
+    this.createTask = this.fb.group({
+      task_name: [''],
+      of_project: [''],
+      users_assigned: ['']
+    });
   }
 
   fetchUsers() {
@@ -105,7 +92,7 @@ export class AddtaskComponent implements OnInit {
         );
     }
     else {
-      this.httpService.doPost("task/edit/" + id, this.createTask.value)
+      this.httpService.doPatch("tasks/" + id, this.createTask.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["tasks"]);

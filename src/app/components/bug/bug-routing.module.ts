@@ -13,7 +13,7 @@ const routes: Routes = [
     component: AddbugComponent
   },
   {
-    path: 'addbug/:id',
+    path: 'addbug/id',
     component: AddbugComponent
   }
 ];

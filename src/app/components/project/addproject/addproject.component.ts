@@ -20,28 +20,28 @@ export class AddprojectComponent implements OnInit {
   start_date;
   end_date;
   constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
-    // this.createProject = this.fb.group({
-    //   title: [''],
-    //   desc: [''],
-    //   multiple_users: [''],
-    //   start_date: [''],
-    //   end_date: ['']
-    // });
+    this.createProject = this.fb.group({
+      title: [''],
+      desc: [''],
+      multiple_users: [''],
+      start_date: [''],
+      end_date: ['']
+    });
   }
 
-  addProject() {
-    const project = {
-      title: this.title,
-      desc: this.desc,
-      mutiple_users: this.multiple_users,
-      start_date: this.start_date,
-      end_date: this.end_date
-    };
-    this.httpService.doPost('project/add', project);
-    // .subscribe(() => {
-    //   this.router.navigate(['/dashboard']);
-    // });
-  }
+  // addProject() {
+  //   const project = {
+  //     title: this.title,
+  //     desc: this.desc,
+  //     mutiple_users: this.multiple_users,
+  //     start_date: this.start_date,
+  //     end_date: this.end_date
+  //   };
+  //   this.httpService.doPost('project/add', project);
+  //   // .subscribe(() => {
+  //   //   this.router.navigate(['/dashboard']);
+  //   // });
+  // }
 
   fetchUsers() {
     this.httpService.doGet('users')
@@ -50,9 +50,10 @@ export class AddprojectComponent implements OnInit {
         console.log('Data requested ...');
         console.log(this.users);
       });
-  }
+  } 
 
   ngOnInit() {
+    this.fetchUsers();
     let id = this.route.snapshot.params["id"];
     
     if (id) {
@@ -99,7 +100,7 @@ export class AddprojectComponent implements OnInit {
         );
     }
     else {
-      this.httpService.doPost("project/edit/" + id, this.createProject.value)
+      this.httpService.doPatch("projects/" + id, this.createProject.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["projects"]);

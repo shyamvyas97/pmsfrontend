@@ -23,24 +23,24 @@ export class AddbugComponent implements OnInit {
   users_assigned;
 
   constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
-    // this.createBug = this.fb.group({
-    //   bug_name: [''],
-    //   of_project: [''],
-    //   users_assigned: ['']
-    // });
+    this.createBug = this.fb.group({
+      bug_name: [''],
+      of_project: [''],
+      users_assigned: ['']
+    });
   }
 
-  addBug() {
-    const task = {
-      bug_name: this.bug_name,
-      of_project: this.of_project,
-      users_assigned: this.users_assigned
-    };
-    this.httpService.doPost('bug/add', task);
-    // .subscribe(() => {
-    //   this.router.navigate(['/dashboard']);
-    // });
-  }
+  // addBug() {
+  //   const task = {
+  //     bug_name: this.bug_name,
+  //     of_project: this.of_project,
+  //     users_assigned: this.users_assigned
+  //   };
+  //   this.httpService.doPost('bug/add', task);
+  //   // .subscribe(() => {
+  //   //   this.router.navigate(['/dashboard']);
+  //   // });
+  // }
 
   fetchUsers() {
     this.httpService.doGet('users')
@@ -106,7 +106,7 @@ export class AddbugComponent implements OnInit {
         );
     }
     else {
-      this.httpService.doPost("bug/edit/" + id, this.createBug.value)
+      this.httpService.doPatch("bugs/" + id, this.createBug.value)
         .subscribe(
           (data: any) => {
             that.router.navigate(["bugs"]);

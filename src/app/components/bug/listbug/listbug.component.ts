@@ -37,7 +37,7 @@ export class ListbugComponent implements OnInit {
 
   addBug()
   {
-  	this.router.navigate(['bugs/add']);
+  	this.router.navigate(['addbug']);
   }
 }
 

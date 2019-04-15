@@ -4,63 +4,25 @@
       {{mode}} user
     </div>
     <div class="col-md-6">
-      <form [formGroup]="createUser" name="createUser" class="create-form" (ngSubmit)="onSubmit()">
+      <form [formGroup]="createUser" name="createUser" (ngSubmit)="onSubmit()">
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="name" formControlName="name" [(ngModel)]="name" #name>
+          <input matInput placeholder="name" [value]="this.name" formControlName="name" #name>
         </mat-form-field>
-
+<br>
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="email" formControlName="email" #email [(ngModel)]="email">
+          <input matInput placeholder="email" [value]="this.email" formControlName="email" #email>
         </mat-form-field>
-
+<br>
         <mat-form-field class="field-full-width">
-          <mat-select [(ngModel)]="role_name" formControlName="role_name" #role_name placeholder="Roles" multiple>
-            <mat-option *ngFor="let role of roles" [value]="role.role_name">{{role.role_name}}</mat-option>
+          <mat-select formControlName="role_name" placeholder="Roles" multiple #role_name>
+            <mat-option *ngFor="let role of roles" [value]="role.name">{{role.name}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <button type="submit" (click)="addUser()" mat-raised-button color="primary">Register
+    <br>    <button type="submit" mat-raised-button color="primary">Register
         </button>
       </form>
     </div>
     <div class="col-md-3">
     </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-  <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-  <mat-card>
-    <section class="mat-typography">
-      <h3>Register</h3>
-    </section>
-    <mat-divider></mat-divider>
-    <br>
-    <form [formGroup]="createForm" class="create-form">
-      
-      <mat-form-field class="field-full-width">
-        <input matInput placeholder="Enter an email" formControlName="email" #email>
-      </mat-form-field>
-      
-      <mat-divider></mat-divider>
-      <br><br>
-      <button mat-raised-button color="accent" routerLink="/login">Already a user</button>&nbsp;
-      <button type="submit" (click)="addUser(email.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
-    </form>
-  </mat-card>
-    </div>
-    <div class="col-md-3"></div>
   </div>
 </div>

@@ -16,8 +16,8 @@
       <td>{{task.of_project}}</td>
       <td>{{task.users_assigned}}</td>
       <td>
-          <a routerLink="/tasks/add/{{task._id}}">Edit</a>&nbsp;
-        <button mat-button color="warn" (click)="deleteTask($event)">Delete</button>
+          <a routerLink="addtask/{{task._id}}">Edit</a>&nbsp;
+          <a href="javascript:;" (click)="deleteTask($event)" data-id="{{task._id}}">Delete</a>
         <!-- <a routerLink="/{{commonFunctions.getAccessCodePrefix()}}/projects/edit/{{project._id}}">Edit</a>&nbsp;
             <a href="javascript:;" (click)="deleteProject($event)" data-id="{{project._id}}">Delete</a> -->
       </td>

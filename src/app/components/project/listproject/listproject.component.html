@@ -1,6 +1,6 @@
 
 <div>
-    <button type="button" class="btn btn-primary" (click)="addProject()" style="float: right;">New Project</button>
+    <!-- <button type="button" class="btn btn-primary" (click)="addProject()" style="float: right;">New Project</button> -->
   <div class="card-body">
     <table class="table table-bordered">
       <tr>
@@ -20,8 +20,8 @@
         <td>{{project.start_date}}</td>
         <td>{{project.end_date}}</td>
         <td>
-            <a routerLink="/projects/add/{{project._id}}">Edit</a>&nbsp;
-          <button mat-button color="warn" (click)="deleteProject($event)">Delete</button>
+            <a routerLink="addproject/{{project._id}}">Edit</a>&nbsp;
+          <a href="javascript:;" (click)="deleteProject($event)" data-id="{{project._id}}">Delete</a>
           <!-- <a routerLink="/{{commonFunctions.getAccessCodePrefix()}}/projects/edit/{{project._id}}">Edit</a>&nbsp;
               <a href="javascript:;" (click)="deleteProject($event)" data-id="{{project._id}}">Delete</a> -->
         </td>

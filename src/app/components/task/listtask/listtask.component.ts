@@ -20,7 +20,7 @@ export class ListtaskComponent implements OnInit {
   }
 
   getTasks(){
-    this.httpService.doGet("/tasks").subscribe((res: Task[]) => {
+    this.httpService.doGet("tasks").subscribe((res: Task[]) => {
       this.tasks = res;
     });
     console.log(this.tasks);
@@ -37,7 +37,7 @@ export class ListtaskComponent implements OnInit {
 
   addTask()
   {
-  	this.router.navigate(['/tasks/add']);
+  	this.router.navigate(['/addtask']);
   }
 
 }

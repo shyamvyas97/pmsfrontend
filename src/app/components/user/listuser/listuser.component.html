@@ -1,6 +1,6 @@
 
 <div>
-    <button type="button" class="btn btn-primary" (click)="addUser()" style="float: right;">New Project</button>
+    <!-- <button type="button" class="btn btn-primary" (click)="addUser()" style="float: right;">New Project</button> -->
   <div class="card-body">
     <table class="table table-bordered">
       <tr>
@@ -10,14 +10,15 @@
         <th>Role</th>
         <th>Actions</th>
       </tr>
-      <tr *ngFor="let user of users; let ind = index">
+      <tr *ngFor="let user of users">
         <!-- <td>{{project._id}}</td> -->
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
-        <td>{{user.role}}</td>
+        <td>{{user.role_name}}</td>
         <td>
-            <a routerLink="/users/add/{{user._id}}">Edit</a>&nbsp;
-          <button mat-button color="warn" (click)="deleteUser($event)">Delete</button>
+            <!-- /users/add/ -->
+            <a routerLink="adduser/{{user._id}}">Edit</a>&nbsp;
+          <a href="javascript:;" (click)="deleteUser($event)" data-id="{{user._id}}">Delete</a>
           <!-- <a routerLink="/{{commonFunctions.getAccessCodePrefix()}}/projects/edit/{{project._id}}">Edit</a>&nbsp;
               <a href="javascript:;" (click)="deleteProject($event)" data-id="{{project._id}}">Delete</a> -->
         </td>

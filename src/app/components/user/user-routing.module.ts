@@ -13,7 +13,7 @@ const routes: Routes = [
     component: AdduserComponent
   },
   {
-    path: 'adduser/:id',
+    path: 'adduser/id',
     component: AdduserComponent
   }
 ];

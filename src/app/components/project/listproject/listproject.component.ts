@@ -25,7 +25,7 @@ export class ListprojectComponent implements OnInit {
   }
 
   getProjects(){
-    this.httpService.doGet("/projects").subscribe(res=>{
+    this.httpService.doGet("projects").subscribe(res=>{
       this.projects = res;
     });
     console.log(this.projects);
@@ -42,7 +42,7 @@ export class ListprojectComponent implements OnInit {
 
   addProject()
   {
-  	this.router.navigate(['/projects/add']);
+  	this.router.navigate(['/addproject']);
   }
 
 

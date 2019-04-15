@@ -1,29 +1,28 @@
-
 <div>
   <button type="button" class="btn btn-primary" (click)="addTask()" style="float: right;">New Bug</button>
-<div class="card-body">
-  <table class="table table-bordered">
-    <tr>
-      <!-- <th>#</th> -->
-      <th>Bug</th>
-      <th>Project</th>
-      <th>Users</th>
-      <th>Actions</th>
-    </tr>
-    <tr *ngFor="let bug of bugs; let ind = index">
-      <!-- <td>{{project._id}}</td> -->
-      <td>{{bug.bug_name}}</td>
-      <td>{{bug.of_project}}</td>
-      <td>{{bug.users_assigned}}</td>
-      <td>
-          <a routerLink="/bugs/add/{{bug._id}}">Edit</a>&nbsp;
-        <button mat-button color="warn" (click)="deleteBug($event)">Delete</button>
-        <!-- <a routerLink="/{{commonFunctions.getAccessCodePrefix()}}/projects/edit/{{project._id}}">Edit</a>&nbsp;
+  <div class="card-body">
+    <table class="table table-bordered">
+      <tr>
+        <!-- <th>#</th> -->
+        <th>Bug</th>
+        <th>Project</th>
+        <th>Users</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let bug of bugs; let ind = index">
+        <!-- <td>{{project._id}}</td> -->
+        <td>{{bug.bug_name}}</td>
+        <td>{{bug.of_project}}</td>
+        <td>{{bug.users_assigned}}</td>
+        <td>
+          <a routerLink="addbug/{{bug._id}}">Edit</a>&nbsp;
+          <a href="javascript:;" (click)="deleteBug($event)" data-id="{{bug._id}}">Delete</a>
+          <!-- <a routerLink="/{{commonFunctions.getAccessCodePrefix()}}/projects/edit/{{project._id}}">Edit</a>&nbsp;
             <a href="javascript:;" (click)="deleteProject($event)" data-id="{{project._id}}">Delete</a> -->
-      </td>
-    </tr>
-  </table>
-</div>
+        </td>
+      </tr>
+    </table>
+  </div>
 
 
 </div>
