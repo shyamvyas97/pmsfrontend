@@ -1,36 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      asdf
+      
     </div>
     <div class="col-md-6">
-      asdf
-      <form [formGroup]="createTask" form name="createTask" (ngSubmit)="onSubmit()">
+      
+      <form [formGroup]="createTask" name="createTask" (ngSubmit)="onSubmit()">
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="task_name" [value]="task_name" formControlName="task_name" #task_name [(ngModel)]="task_name">
+          <input matInput placeholder="task_name" formControlName="task_name" #task_name>
         </mat-form-field>
-
+        <br>
         <mat-form-field class="field-full-width">
-          <mat-select [(ngModel)]="of_project" [value]="of_project" formControlName="of_project" #of_project placeholder="of_project"
+          <mat-select formControlName="of_project" #of_project placeholder="of_project"
             multiple>
-            <mat-option *ngFor="let project of projects" [value]="project.title">{{project.title}}</mat-option>
+            <mat-option *ngFor="let project of projects" [value]="project._id">{{project.title}}</mat-option>
           </mat-select>
         </mat-form-field>
-
+        <br>
         <mat-form-field class="field-full-width">
-          <mat-select [(ngModel)]="users_assigned" [value]="users_assigned" formControlName="users_assigned" #users_assigned
+          <mat-select formControlName="users_assigned" #users_assigned
             placeholder="users_assigned" multiple>
-            <mat-option *ngFor="let user of users" [value]="user.name">{{user.name}}</mat-option>
+            <mat-option *ngFor="let user of users" [value]="user._id">{{user.name}}</mat-option>
           </mat-select>
         </mat-form-field>
-
+        <br>
         <button type="submit" mat-raised-button color="primary">Add Task
         </button>
       </form>
-      asdf
+      
     </div>
     <div class="col-md-3">
-      zxcv
+      
     </div>
   </div>
 </div>

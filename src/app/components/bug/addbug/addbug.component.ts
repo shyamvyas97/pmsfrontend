@@ -23,11 +23,11 @@ export class AddbugComponent implements OnInit {
   users_assigned;
 
   constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
-    this.createBug = this.fb.group({
-      bug_name: [''],
-      of_project: [''],
-      users_assigned: ['']
-    });
+    // this.createBug = this.fb.group({
+    //   bug_name: [''],
+    //   of_project: [''],
+    //   users_assigned: ['']
+    // });
   }
 
   // addBug() {
@@ -86,9 +86,9 @@ export class AddbugComponent implements OnInit {
 
   validator() {
     this.createBug = this.fb.group({
-      bug_name: ['this.bug_name'],
-      of_project: ['this.of_project'],
-      users_assigned: ['this.users_assigned']
+      bug_name: [this.bug_name],
+      of_project: [this.of_project],
+      users_assigned: [this.users_assigned]
     });
   }
 
@@ -100,7 +100,7 @@ export class AddbugComponent implements OnInit {
       this.httpService.doPost("bug/add", this.createBug.value)
         .subscribe(
           (data: any) => {
-            that.router.navigate(["bugs"]);
+            that.router.navigate(["bug"]);
           },
           (err: any) => { }
         );
@@ -109,7 +109,7 @@ export class AddbugComponent implements OnInit {
       this.httpService.doPatch("bugs/" + id, this.createBug.value)
         .subscribe(
           (data: any) => {
-            that.router.navigate(["bugs"]);
+            that.router.navigate(["bug"]);
           },
           (err: any) => { }
         )

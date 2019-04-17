@@ -72,9 +72,9 @@ export class AddtaskComponent implements OnInit {
 
   validator() {
     this.createTask = this.fb.group({
-      task_name: ['this.task_name'],
-      of_project: ['this.of_project'],
-      users_assigned: ['this.users_assigned']
+      task_name: [this.task_name],
+      of_project: [this.of_project],
+      users_assigned: [this.users_assigned]
     });
   }
 
@@ -86,7 +86,7 @@ export class AddtaskComponent implements OnInit {
       this.httpService.doPost("task/add", this.createTask.value)
         .subscribe(
           (data: any) => {
-            that.router.navigate(["tasks"]);
+            that.router.navigate(["task"]);
           },
           (err: any) => { }
         );
@@ -95,7 +95,7 @@ export class AddtaskComponent implements OnInit {
       this.httpService.doPatch("tasks/" + id, this.createTask.value)
         .subscribe(
           (data: any) => {
-            that.router.navigate(["tasks"]);
+            that.router.navigate(["task"]);
           },
           (err: any) => { }
         )

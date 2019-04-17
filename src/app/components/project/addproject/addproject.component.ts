@@ -78,11 +78,11 @@ export class AddprojectComponent implements OnInit {
 
   validator() {
     this.createProject = this.fb.group({
-      title: ['this.title'],
-      desc: ['this.desc'],
-      multiple_users: ['this.multiple_users'],
-      start_date: ['this.start_date'],
-      end_date: ['this.end_date']
+      title: [this.title],
+      desc: [this.desc],
+      multiple_users: [this.multiple_users],
+      start_date: [this.start_date],
+      end_date: [this.end_date]
     });
   }
 
@@ -91,10 +91,11 @@ export class AddprojectComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     if (!id) {
       console.log(id);
+      console.log(this.createProject.value);
       this.httpService.doPost("project/add", this.createProject.value)
         .subscribe(
           (data: any) => {
-            that.router.navigate(["projects"]);
+            that.router.navigate(["project"]);
           },
           (err: any) => { }
         );

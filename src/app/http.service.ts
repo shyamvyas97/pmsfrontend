@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HttpService {
 
-  uri = 'http://159.89.167.5:3000/';
+  uri = 'http://139.59.25.162:3000/';
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +24,6 @@ export class HttpService {
 
   doPatch(path,data)
   {
-    return this.http.patch(`${this.uri}` + path,data);
+    return this.http.put(`${this.uri}` + path,data);
   }
 }

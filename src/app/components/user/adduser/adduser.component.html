@@ -6,16 +6,16 @@
     <div class="col-md-6">
       <form [formGroup]="createUser" name="createUser" (ngSubmit)="onSubmit()">
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="name" [value]="this.name" formControlName="name" #name>
+          <input matInput placeholder="name" formControlName="name" #name>
         </mat-form-field>
 <br>
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="email" [value]="this.email" formControlName="email" #email>
+          <input matInput placeholder="email" formControlName="email" #email>
         </mat-form-field>
 <br>
         <mat-form-field class="field-full-width">
           <mat-select formControlName="role_name" placeholder="Roles" multiple #role_name>
-            <mat-option *ngFor="let role of roles" [value]="role.name">{{role.name}}</mat-option>
+            <mat-option *ngFor="let role of roles" [value]="role._id">{{role.name}}</mat-option>
           </mat-select>
         </mat-form-field>
     <br>    <button type="submit" mat-raised-button color="primary">Register

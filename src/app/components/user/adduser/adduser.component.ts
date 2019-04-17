@@ -61,7 +61,6 @@ export class AdduserComponent implements OnInit {
       });
   }
 
-  
 
   usersList(id) {
     this.httpService.doGet("users/" + id).subscribe((res: any) => {
@@ -84,23 +83,20 @@ export class AdduserComponent implements OnInit {
     let that = this;
     let id = this.route.snapshot.params["id"];
     if (!id) {
-      console.log(id);
+      // console.log(id);
+      console.log(this.createUser.value);
       this.httpService.doPost("user/add", this.createUser.value)
         .subscribe(
-          (data: any) => {
-            that.router.navigate(["users"]);
-          },
-          (err: any) => { }
-        );
+          () => {
+            that.router.navigate(["user"]);
+          });
     }
     else {
       this.httpService.doPatch("users/" + id, this.createUser.value)
         .subscribe(
-          (data: any) => {
-            that.router.navigate(["users"]);
-          },
-          (err: any) => { }
-        )
+          () => {
+            that.router.navigate(["user"]);
+          });
     }
   }
 
