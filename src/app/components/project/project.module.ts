@@ -6,6 +6,8 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { AddprojectComponent } from './addproject/addproject.component';
 import { ListprojectComponent } from './listproject/listproject.component';
 import { EditprojectComponent } from './editproject/editproject.component';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+// import {DateAdapter, MAT_DATE_FORMATS  }  from '@angular/material';
 
 @NgModule({
   declarations: [AddprojectComponent, ListprojectComponent, EditprojectComponent],
@@ -25,7 +27,8 @@ import { EditprojectComponent } from './editproject/editproject.component';
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMomentDateModule
   ]
 })
 export class ProjectModule { }

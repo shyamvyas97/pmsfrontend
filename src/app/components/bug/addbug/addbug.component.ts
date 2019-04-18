@@ -23,11 +23,11 @@ export class AddbugComponent implements OnInit {
   users_assigned;
 
   constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
-    // this.createBug = this.fb.group({
-    //   bug_name: [''],
-    //   of_project: [''],
-    //   users_assigned: ['']
-    // });
+    this.createBug = this.fb.group({
+      bug_name: [''],
+      of_project: [''],
+      users_assigned: ['']
+    });
   }
 
   // addBug() {

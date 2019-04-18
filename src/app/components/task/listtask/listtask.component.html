@@ -12,9 +12,10 @@
     </tr>
     <tr *ngFor="let task of tasks; let ind = index">
       <!-- <td>{{project._id}}</td> -->
+      <!-- task.of_project[0]?.title -->
       <td>{{task.task_name}}</td>
-      <td>{{task.of_project}}</td>
-      <td>{{task.users_assigned}}</td>
+      <td>{{task.of_project[0]?.title}}</td>
+      <td>{{task.users_assigned[0]?.name}}</td>
       <td>
           <a routerLink="addtask/{{task._id}}">Edit</a>&nbsp;
           <a href="javascript:;" (click)="deleteTask($event)" data-id="{{task._id}}">Delete</a>

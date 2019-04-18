@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { NoPreloading, PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { DateAdapterComponent } from './date-adapter/date-adapter.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DateAdapterComponent
   ],
   imports: [
     BrowserModule,

@@ -12,11 +12,11 @@
         <th>End Date</th>
         <th>Actions</th>
       </tr>
-      <tr *ngFor="let project of projects; let ind = index">
+      <tr *ngFor="let project of projects; let i = multiple_users">
         <!-- <td>{{project._id}}</td> -->
         <td>{{project.title}}</td>
         <td>{{project.desc}}</td>
-        <td>{{project.multiple_users}}</td>
+        <td>{{project.multiple_users[0]?.name}}</td>
         <td>{{project.start_date}}</td>
         <td>{{project.end_date}}</td>
         <td>

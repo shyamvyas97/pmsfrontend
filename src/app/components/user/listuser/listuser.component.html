@@ -14,7 +14,7 @@
         <!-- <td>{{project._id}}</td> -->
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
-        <td>{{user.role_name}}</td>
+        <td>{{user.role_name[0]?.name}}</td>
         <td>
             <!-- /users/add/ -->
             <a routerLink="adduser/{{user._id}}">Edit</a>&nbsp;

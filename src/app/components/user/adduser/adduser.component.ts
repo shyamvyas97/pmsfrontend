@@ -19,7 +19,7 @@ export class AdduserComponent implements OnInit {
   name;
   email;
   role_name;
-  constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) { 
+  constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { 
     this.createUser = this.fb.group({
       name: [''],
       email: [''],
