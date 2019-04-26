@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user';
 import { Project } from '../../../models/project';
@@ -24,9 +24,9 @@ export class AddbugComponent implements OnInit {
 
   constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
     this.createBug = this.fb.group({
-      bug_name: [''],
-      of_project: [''],
-      users_assigned: ['']
+      bug_name: ['', Validators.required],
+      of_project: ['', Validators.required],
+      users_assigned: ['', Validators.required]
     });
   }
 
@@ -65,7 +65,7 @@ export class AddbugComponent implements OnInit {
     this.fetchProjects();
     this.fetchUsers();
     let id = this.route.snapshot.params["id"];
-    
+
     if (id) {
       this.bugsList(id);
       this.mode = "Edit";

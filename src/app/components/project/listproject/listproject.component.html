@@ -1,4 +1,4 @@
-
+<a routerLink="/project/addproject">Add Project</a>
 <div>
     <!-- <button type="button" class="btn btn-primary" (click)="addProject()" style="float: right;">New Project</button> -->
   <div class="card-body">
@@ -12,11 +12,12 @@
         <th>End Date</th>
         <th>Actions</th>
       </tr>
-      <tr *ngFor="let project of projects; let i = multiple_users">
+      <tr *ngFor="let project of projects">
         <!-- <td>{{project._id}}</td> -->
         <td>{{project.title}}</td>
         <td>{{project.desc}}</td>
-        <td>{{project.multiple_users[0]?.name}}</td>
+        <!-- <td>{{project.multiple_users[0]?.name}}</td> -->
+        <td><div *ngFor="let user of project.multiple_users">{{user.name}}</div></td>
         <td>{{project.start_date}}</td>
         <td>{{project.end_date}}</td>
         <td>
@@ -31,3 +32,5 @@
 
 
 </div>
+
+

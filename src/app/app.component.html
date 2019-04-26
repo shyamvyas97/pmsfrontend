@@ -1,1 +1,23 @@
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/user">Users</a>
+    <a class="nav-item nav-link" routerLink="/project">Projects</a>
+    <a class="nav-item nav-link" routerLink="/task">Tasks</a>
+    <a class="nav-item nav-link" routerLink="/bug">Bugs</a>
+    <a class="nav-item nav-link" routerLink="/entity">Entities</a>
+    <a class="nav-item nav-link" routerLink="/permission">Permissions</a>
+    <!-- <a class="nav-item nav-link" routerLink="/">Home</a> -->
+    <!-- <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a> -->
+    <a class="nav-item nav-link" routerLink="/user/login" (click)="logout()">Logout</a>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

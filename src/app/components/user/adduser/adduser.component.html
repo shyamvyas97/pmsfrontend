@@ -1,28 +1,60 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      {{mode}} user
+      {{mode}} user<br>
+      <a routerLink="/user">List Users</a>
     </div>
     <div class="col-md-6">
       <form [formGroup]="createUser" name="createUser" (ngSubmit)="onSubmit()">
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="name" formControlName="name" #name>
+          <input matInput id="name" placeholder="name" formControlName="name"
+            [ngClass]="{'is-invalid': submitted && c.name.errors}" required #name>
+          <div *ngIf="submitted && c.name.errors" class="invalid-feedback">
+            <div *ngIf="c.name.errors.required">Name is required</div>
+          </div>
         </mat-form-field>
-<br>
+
+        <br>
+
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="email" formControlName="email" #email>
+          <input matInput placeholder="email" formControlName="email"
+            [ngClass]="{'is-invalid': submitted && c.email.errors}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required #email>
+            <div *ngIf="email.errors &&(email.touched || email.dirty)" class ="aler alert-danger">
+              <div [hidden]="!email.errors?.pattern">
+                Invalid pattern
+              </div> 
+            </div>
         </mat-form-field>
-<br>
+
+        <br>
+
         <mat-form-field class="field-full-width">
-          <mat-select formControlName="role_name" placeholder="Roles" multiple #role_name>
+          <mat-select formControlName="role_name" placeholder="Roles" required #role_name>
             <mat-option *ngFor="let role of roles" [value]="role._id">{{role.name}}</mat-option>
           </mat-select>
+          <!-- <mat-error *ngIf="isFieldInvalid('role_name')">
+            Your role please
+          </mat-error> -->
         </mat-form-field>
-    <br>    <button type="submit" mat-raised-button color="primary">Register
+
+        <br>
+        <button type="submit" [disabled]="!createUser.valid" mat-raised-button color="primary">Register
         </button>
+
       </form>
     </div>
     <div class="col-md-3">
     </div>
   </div>
 </div>
+
+
+
+
+<!-- <input id="name" name="name" class="form-control"
+      required minlength="4" appForbiddenName="bob"
+      [(ngModel)]="hero.name" #name="ngModel" > -->
+
+<!-- <div *ngIf="name.invalid">
+    Name is required.
+</div> -->

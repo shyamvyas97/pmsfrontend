@@ -1,26 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
+      {{mode}} bug<br>
+      <a routerLink="/bug">List Bugs</a>
     </div>
     <div class="col-md-6">
       <form [formGroup]="createBug" name="createBug" (ngSubmit)="onSubmit()">
         <mat-form-field>
-          <input matInput placeholder="bug_name" formControlName="bug_name" #bug_name>
+          <input matInput placeholder="bug_name" formControlName="bug_name" required #bug_name>
         </mat-form-field>
         <br>
         <mat-form-field class="field-full-width">
-          <mat-select formControlName="of_project" #of_project placeholder="of_project" multiple>
+          <mat-select formControlName="of_project" #of_project required placeholder="of_project">
             <mat-option *ngFor="let project of projects" [value]="project._id">{{project.title}}</mat-option>
           </mat-select>
         </mat-form-field>
         <br>
         <mat-form-field class="field-full-width">
-          <mat-select formControlName="users_assigned" #users_assigned placeholder="users_assigned" multiple>
+          <mat-select formControlName="users_assigned" #users_assigned required placeholder="users_assigned" multiple>
             <mat-option *ngFor="let user of users" [value]="user._id">{{user.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <br>
-        <button type="submit" mat-raised-button color="primary">Add Bug
+        <button type="submit" [disabled]="!createBug.valid" mat-raised-button color="primary">Add Bug
         </button>
       </form>
     </div>

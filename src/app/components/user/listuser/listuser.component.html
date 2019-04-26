@@ -1,4 +1,4 @@
-
+<a routerLink="/user/adduser">Add User</a>
 <div>
     <!-- <button type="button" class="btn btn-primary" (click)="addUser()" style="float: right;">New Project</button> -->
   <div class="card-body">
@@ -14,7 +14,9 @@
         <!-- <td>{{project._id}}</td> -->
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
-        <td>{{user.role_name[0]?.name}}</td>
+        <!-- <td>{{user.role_name[0]?.name}}</td> -->
+        <!-- <td>{{user.role_name}}</td> -->
+        <td><div *ngFor="let role of user.role_name">{{role.name}}</div></td>
         <td>
             <!-- /users/add/ -->
             <a routerLink="adduser/{{user._id}}">Edit</a>&nbsp;

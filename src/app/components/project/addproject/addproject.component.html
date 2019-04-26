@@ -1,40 +1,41 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-
+      {{mode}} project<br>
+      <a routerLink="/project">List Projects</a>
     </div>
     <div class="col-md-6">
 
       <form name="createProject" [formGroup]="createProject" (ngSubmit)="onSubmit()">
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="title" formControlName="title" #title>
+          <input matInput placeholder="title" formControlName="title" required #title>
         </mat-form-field>
         <br>
         <mat-form-field class="field-full-width">
-          <input matInput placeholder="desc" formControlName="desc" #desc>
+          <input matInput placeholder="desc" formControlName="desc" required #desc>
         </mat-form-field>
         <br>
         <mat-form-field class="field-full-width">
-          <mat-select formControlName="multiple_users" #multiple_users placeholder="multiple_users" multiple>
+          <mat-select formControlName="multiple_users" #multiple_users required placeholder="multiple_users" multiple>
             <mat-option *ngFor="let user of users" [value]="user._id">{{user.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput [matDatepicker]="picker1" formControlName="start_date" #start_date
+          <input matInput [matDatepicker]="picker1" formControlName="start_date" required #start_date
             placeholder="Choose a start date">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput [matDatepicker]="picker2" formControlName="end_date" #end_date
+          <input matInput [matDatepicker]="picker2" formControlName="end_date" required #end_date
             placeholder="Choose a end date">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
         <br>
-        <button mat-raised-button color="primary">Add Project
+        <button [disabled]="!createProject.valid" mat-raised-button color="primary">Add Project
         </button>
       </form>
 

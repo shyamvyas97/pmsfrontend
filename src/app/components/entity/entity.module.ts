@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, MatNativeDateModule, MatPaginator, MatPaginatorModule } from '@angular/material';
-import { UserRoutingModule } from './user-routing.module';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { AdduserComponent } from './adduser/adduser.component';
-import { ListuserComponent } from './listuser/listuser.component';
-import { LoginuserComponent } from './loginuser/loginuser.component';
-import { HomeComponent } from './home/home.component';
+
+import { EntityRoutingModule } from './entity-routing.module';
+import { AddentityComponent } from './addentity/addentity.component';
+import { ListentityComponent } from './listentity/listentity.component';
 
 @NgModule({
-  declarations: [AdduserComponent, ListuserComponent, LoginuserComponent, HomeComponent],
+  declarations: [AddentityComponent, ListentityComponent],
   imports: [
     CommonModule,
-    UserRoutingModule,
+    EntityRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
@@ -27,4 +26,4 @@ import { HomeComponent } from './home/home.component';
     MatDividerModule
   ]
 })
-export class UserModule { }
+export class EntityModule { }

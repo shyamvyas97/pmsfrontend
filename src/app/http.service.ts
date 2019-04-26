@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+// import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,13 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
 
   uri = 'http://139.59.25.162:3000/';
+  // uri = 'http://localhost:3000/';
+
+  // public loggedIn = new BehaviorSubject<boolean>(false);
+
+  // get isLoggedIn() {
+  //   return this.loggedIn.asObservable(); // {2}
+  // }
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +33,11 @@ export class HttpService {
   doPatch(path,data)
   {
     return this.http.put(`${this.uri}` + path,data);
+  }
+
+  doLogin(path,data)
+  {
+    return this.http.post(`${this.uri}` + path, data);
+    // this.loggedIn.next(true);
   }
 }

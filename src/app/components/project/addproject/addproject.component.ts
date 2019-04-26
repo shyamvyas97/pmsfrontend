@@ -47,11 +47,11 @@ export class AddprojectComponent implements OnInit {
   end_date;
   constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
     this.createProject = this.fb.group({
-      title: [''],
-      desc: [''],
-      multiple_users: [''],
-      start_date: [''],
-      end_date: ['']
+      title: ['',Validators.required],
+      desc: ['',Validators.required],
+      multiple_users: ['',Validators.required],
+      start_date: ['',Validators.required],
+      end_date: ['',Validators.required]
     });
   }
 

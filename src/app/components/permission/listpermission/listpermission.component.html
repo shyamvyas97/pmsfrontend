@@ -1,0 +1,33 @@
+<a routerLink="/permission/addpermission">Add Permission</a>
+<div>
+  <div class="card-body">
+    <table class="table table-bordered">
+      <tr>
+        <!-- <th>#</th> -->
+        <th>Entity</th>
+        <th>Role</th>
+        <th>Add/Edit</th>
+        <th>List</th>
+        <th>Delete</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let permission of permissions">
+        <td>
+          <div *ngFor="let entity of permission.entity_name">{{entity.entity_name}}</div>
+        </td>
+        <td>
+          <div *ngFor="let role of permission.role_name">{{role.name}}</div>
+        </td>
+        <td>{{permission.add_edit}}</td>
+        <td>{{permission.list}}</td>
+        <td>{{permission.del}}</td>
+        <td>
+          <a routerLink="addpermission/{{permission._id}}">Edit</a>&nbsp;
+          <a href="javascript:;" (click)="deletePermission($event)" data-id="{{permission._id}}">Delete</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+</div>

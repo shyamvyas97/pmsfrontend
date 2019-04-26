@@ -23,9 +23,9 @@ export class AddtaskComponent implements OnInit {
   users_assigned;
   constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, public route: ActivatedRoute) {
     this.createTask = this.fb.group({
-      task_name: [''],
-      of_project: [''],
-      users_assigned: ['']
+      task_name: ['',Validators.required],
+      of_project: ['',Validators.required],
+      users_assigned: ['',Validators.required]
     });
   }
 

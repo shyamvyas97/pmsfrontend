@@ -1,13 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
-import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, MatNativeDateModule, MatPaginator, MatPaginatorModule } from '@angular/material';
+import { MatToolbarModule, MatRadioModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, MatNativeDateModule, MatPaginator, MatPaginatorModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { NoPreloading, PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { DateAdapterComponent } from './date-adapter/date-adapter.component';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+
+// import { JwtModule } from '@auth0/angular-jwt';
 
 const routes: Routes = [
   {
@@ -25,6 +30,14 @@ const routes: Routes = [
   {
     path: 'task',
     loadChildren: './components/task/task.module#TaskModule'
+  },
+  {
+    path: 'entity',
+    loadChildren: './components/entity/entity.module#EntityModule'
+  },
+  {
+    path: 'permission',
+    loadChildren: './components/permission/permission.module#PermissionModule'
   }
 ];
 
@@ -32,7 +45,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DateAdapterComponent
+    DateAdapterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +54,7 @@ const routes: Routes = [
     HttpModule,
     HttpClientModule,
     MatToolbarModule,
+    MatRadioModule,
     MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
@@ -51,9 +66,10 @@ const routes: Routes = [
     MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
+    // JwtModule.forRoot({}),
     RouterModule.forRoot(routes,{useHash: true}),
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

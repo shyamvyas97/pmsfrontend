@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      {{mode}} permission<br>
+      <a routerLink="/bug">List Permissions</a>
+      <br><br><br>Add/Edit<br>View<br>Delete
+    </div>
+    <div class="col-md-6">
+      <form [formGroup]="createPermission" name="createPermission" (ngSubmit)="onSubmit()">
+
+        <mat-form-field class="field-full-width">
+          <mat-select formControlName="entity_name" placeholder="Entities" required #entity_name>
+            <mat-option *ngFor="let entity of entities" [value]="entity._id">{{entity.entity_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="field-full-width">
+          <mat-select formControlName="role_name" placeholder="Roles" required multiple #role_name>
+            <mat-option *ngFor="let role of roles" [value]="role._id">{{role.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-radio-group aria-label="Set Add/Edit Permission" formControlName="add_edit">
+          <mat-radio-button value="1">Yes</mat-radio-button>
+          <mat-radio-button value="0">No</mat-radio-button>
+        </mat-radio-group>
+
+        <br>
+
+        <mat-radio-group aria-label="Set View Permission" formControlName="list">
+          <mat-radio-button value="1">Yes</mat-radio-button>
+          <mat-radio-button value="0">No</mat-radio-button>
+        </mat-radio-group>
+
+        <br>
+
+        <mat-radio-group aria-label="Set Delete Permission" formControlName="del">
+          <mat-radio-button value="1">Yes</mat-radio-button>
+          <mat-radio-button value="0">No</mat-radio-button>
+        </mat-radio-group>
+
+        <br>
+
+        <button type="submit" [disabled]="!createPermission.valid" mat-raised-button color="primary">Add Permission
+        </button>
+      </form>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+</div>

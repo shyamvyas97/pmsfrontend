@@ -1,0 +1,22 @@
+<a routerLink="/entity/addentity">Add Entity</a>
+<div>
+
+  <div class="card-body">
+    <table class="table table-bordered">
+      <tr>
+        <!-- <th>#</th> -->
+        <th>Entity Name</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let entity of entities">
+        <td>{{entity.entity_name}}</td>
+        <td>
+          <a routerLink="addentity/{{entity._id}}">Edit</a>&nbsp;
+          <a href="javascript:;" (click)="deleteEntity($event)" data-id="{{entity._id}}">Delete</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+</div>

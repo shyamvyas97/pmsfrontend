@@ -12,21 +12,20 @@ export class ListuserComponent implements OnInit {
 
   userList: User[];
   public users: any;
-  constructor(private httpService: HttpService, private router:Router) { }
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
     this.getUsers();
   }
 
-  getUsers(){
-    this.httpService.doGet("users").subscribe(res=>{
+  getUsers() {
+    this.httpService.doGet("users").subscribe(res => {
       this.users = res;
     });
     console.log(this.users);
   }
 
-  deleteUser($event) 
-   {
+  deleteUser($event) {
     let id = $event.target.id;
     let that = this;
     this.httpService.doDel("users/" + id).subscribe(res => {
@@ -34,9 +33,8 @@ export class ListuserComponent implements OnInit {
     });
   }
 
-  addUser()
-  {
-  	this.router.navigate(['/adduser']);
+  addUser() {
+    this.router.navigate(['/adduser']);
   }
 
 }

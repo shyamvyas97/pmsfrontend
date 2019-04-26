@@ -1,5 +1,5 @@
 <div>
-
+    <a routerLink="/bug/addbug">Add Bug</a>
   <div class="card-body">
     <table class="table table-bordered">
       <tr>
@@ -13,7 +13,8 @@
         <!-- <td>{{project._id}}</td> -->
         <td>{{bug.bug_name}}</td>
         <td>{{bug.of_project[0]?.title}}</td>
-        <td>{{bug.users_assigned[0]?.name}}</td>
+        <!-- <td>{{bug.users_assigned[0]?.name}}</td> -->
+        <td><div *ngFor="let user of bug.users_assigned">{{user.name}}</div></td>
         <td>
           <a routerLink="addbug/{{bug._id}}">Edit</a>&nbsp;
           <a href="javascript:;" (click)="deleteBug($event)" data-id="{{bug._id}}">Delete</a>

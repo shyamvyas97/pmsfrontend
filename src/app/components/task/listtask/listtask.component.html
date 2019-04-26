@@ -1,4 +1,4 @@
-
+<a routerLink="/task/addtask">Add Task</a>
 <div>
   <!-- <button type="button" class="btn btn-primary" (click)="addTask()" style="float: right;">New Project</button> -->
 <div class="card-body">
@@ -15,7 +15,8 @@
       <!-- task.of_project[0]?.title -->
       <td>{{task.task_name}}</td>
       <td>{{task.of_project[0]?.title}}</td>
-      <td>{{task.users_assigned[0]?.name}}</td>
+      <!-- <td>{{task.users_assigned[0]?.name}}</td> -->
+      <td><div *ngFor="let user of task.users_assigned">{{user.name}}</div></td>
       <td>
           <a routerLink="addtask/{{task._id}}">Edit</a>&nbsp;
           <a href="javascript:;" (click)="deleteTask($event)" data-id="{{task._id}}">Delete</a>
