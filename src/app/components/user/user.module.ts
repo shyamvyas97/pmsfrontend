@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, MatNativeDateModule, MatPaginator, MatPaginatorModule } from '@angular/material';
+import { MatSnackBar, MatToolbarModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, MatNativeDateModule, MatPaginator, MatPaginatorModule } from '@angular/material';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AdduserComponent } from './adduser/adduser.component';
@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSnackBar,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,

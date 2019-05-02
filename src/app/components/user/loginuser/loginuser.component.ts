@@ -7,7 +7,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { User } from '../../../models/user';
 import { Permission } from 'src/app/models/permission';
 
-
 @Component({
   selector: 'app-loginuser',
   templateUrl: './loginuser.component.html',
@@ -21,12 +20,9 @@ export class LoginuserComponent implements OnInit {
   public loginForm: FormGroup;
   email;
 
-
   constructor(public fb: FormBuilder, public httpService: HttpService, public route: ActivatedRoute, private router: Router) {
     this.loginForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      role_name: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -37,15 +33,18 @@ export class LoginuserComponent implements OnInit {
     this.validator();
   }
 
-  async fetchRole() {
-    await this.login();
-    this.httpService.doGet("users").subscribe(res => {
-      this.users = res;
-    });
-    console.log(this.users.role_name);
-  }
+  // fetch the roles
+
+  // async fetchRole() {
+  //   await this.login();
+  //   this.httpService.doGet("users").subscribe(res => {
+  //     this.users = res;
+  //   });
+  //   console.log(this.users.role_name);
+  // }
 
   //1st function to call
+
   login() {
     let that = this;
     this.httpService
@@ -67,6 +66,7 @@ export class LoginuserComponent implements OnInit {
   }
 
   //2nd function to call
+
   getPermission() {
     var lsuser = JSON.parse(localStorage.getItem('user'));
     console.log(lsuser);
@@ -77,23 +77,24 @@ export class LoginuserComponent implements OnInit {
 
     this.role = item.name;
     console.log(this.role);
-    this.httpService.doGet('/permissions/' + this.role).subscribe((res: Permission[]) => {
+    this.httpService.doGet('permissions/' + this.role).subscribe((res: Permission[]) => {
       this.permissions = res;
     });
     console.log(this.permissions)
   }
 
+  //Last function to call
 
   // getAlldata() {
-  //   this.login()
+  //   this.login();
+  //   console.log()
   //     .subscribe(
-  //       () => this.getPermission()
-  //         .subscribe(
-  //           () => console.log();
-  //                       );
-  //     );
+  //       () => {
+  //         this.getPermission();
+  //       })
+  //     .subscribe(
+  //       () => { console.log(); });
   // }
-
 
   validator() {
     this.loginForm = this.fb.group({

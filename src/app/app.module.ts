@@ -11,7 +11,6 @@ import { DateAdapterComponent } from './date-adapter/date-adapter.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
-
 // import { JwtModule } from '@auth0/angular-jwt';
 
 const routes: Routes = [

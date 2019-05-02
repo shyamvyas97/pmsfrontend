@@ -14,16 +14,12 @@
         <!-- <td>{{project._id}}</td> -->
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
-        <!-- <td>{{user.role_name[0]?.name}}</td> -->
-        <!-- <td>{{user.role_name}}</td> -->
         <td><div *ngFor="let role of user.role_name">{{role.name}}</div></td>
         <td>
             <!-- /users/add/ -->
             <a routerLink="adduser/{{user._id}}">Edit</a>&nbsp;
           <a href="javascript:;" (click)="deleteUser($event)" data-id="{{user._id}}">Delete</a>
-          <!-- <a routerLink="/{{commonFunctions.getAccessCodePrefix()}}/projects/edit/{{project._id}}">Edit</a>&nbsp;
-              <a href="javascript:;" (click)="deleteProject($event)" data-id="{{project._id}}">Delete</a> -->
-        </td>
+         </td>
       </tr>
     </table>
   </div>

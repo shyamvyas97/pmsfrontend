@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Role } from '../../../models/role';
 import { User } from '../../../models/user';
 import { HttpService } from '../../../http.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-adduser',
@@ -22,7 +23,7 @@ export class AdduserComponent implements OnInit {
   email;
   role_name;
 
-  constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  constructor(private httpService: HttpService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar) {
     this.createUser = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -37,7 +38,7 @@ export class AdduserComponent implements OnInit {
     if (id) {
       this.usersList(id);
       this.mode = "Edit";
-    } 
+    }
     else {
       this.mode = "Create";
       this.validator();
@@ -68,6 +69,14 @@ export class AdduserComponent implements OnInit {
       });
   }
 
+  //   for(var i = 0; i < this.roles.length; i++)
+  // {
+  //   var element = this.roles.role_name[i];
+  //   for (var j = 0; j < role_name.length; j++) {
+  //     var version = role_name[j];
+  //   }
+  // }
+
   // isFieldInvalid(field: string) { // {6}
   //   return (
   //     (!this.createUser.get(field).valid && this.createUser.get(field).touched) ||
@@ -77,6 +86,12 @@ export class AdduserComponent implements OnInit {
 
   usersList(id) {
     this.httpService.doGet("users/" + id).subscribe((res: any) => {
+
+      // this.issue = res;
+      // this.createUser.get('name').setValue(res.name);
+      // this.createUser.get('email').setValue(res.email);
+      // this.createUser.get('role_name').setValue(res.role_name);
+
       this.name = res.name;
       this.email = res.email;
       this.role_name = res.role_name;
@@ -103,6 +118,11 @@ export class AdduserComponent implements OnInit {
         this.httpService.doPost("user/add", this.createUser.value)
           .subscribe(
             () => {
+              this.snackBar.open('User added successfully', 'OK', {
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'right'
+              });
               that.router.navigate(["user"]);
             });
       }
@@ -111,6 +131,11 @@ export class AdduserComponent implements OnInit {
       this.httpService.doPatch("users/" + id, this.createUser.value)
         .subscribe(
           () => {
+            this.snackBar.open('User updated successfully', 'OK', {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'right'
+            });
             that.router.navigate(["user"]);
           });
     }

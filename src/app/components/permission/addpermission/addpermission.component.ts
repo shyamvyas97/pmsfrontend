@@ -76,13 +76,14 @@ export class AddpermissionComponent implements OnInit {
     this.httpService.doGet('entities')
       .subscribe((req_data: Entity[]) => {
         this.entities = req_data;
+        console.log(this.entities);
       });
   }
 
   validator() {
     this.createPermission = this.fb.group({
       entity_name: [this.entity_name],
-      role_name: [this.entity_name],
+      role_name: [this.role_name],
       add_edit: [this.add_edit],
       del: [this.del],
       list: [this.list]
